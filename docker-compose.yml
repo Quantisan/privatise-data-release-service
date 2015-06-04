@@ -1,0 +1,7 @@
+app:
+  build: .
+  volumes:
+    - .:/usr/src/app
+  ports:
+    - 9000:8000
+
