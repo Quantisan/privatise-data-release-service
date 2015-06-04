@@ -10,6 +10,8 @@ route(app, GET | POST | PUT, "/") do req, res
     "This is the root"
 end
 
+# Takes a column major 2-D array of zeroes and ones
+# Returns a MWEM column major JSON in key 'data'
 post(app, "/mwem") do req, res
   # Parse JSON data
   json_data = req.http_req.data
@@ -21,7 +23,7 @@ post(app, "/mwem") do req, res
 
   # Convert data to tabular form
   table = Tabular(mw.synthetic, cols)
-  res.data = string(table)
+  res.data = JSON.json(table)
 end
 
 # Instantiate and run server
